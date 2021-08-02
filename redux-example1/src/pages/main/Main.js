@@ -1,5 +1,5 @@
 //Importação Recursos do Sistema
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import {Text, View, TextInput,TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -7,14 +7,15 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Style from "./style";
 
 //Importação de Componentes Personalizados
-import {checkList} from "../../hooks/reducers";
+import {checklistFunction} from "../../hooks/functions";
+import {Context} from "../../store";
 
 
 export default function Main({navigation}){
 
     const [inputItem, setInputItem] = useState(null);
 
-    const [state, additem, checkitem, removeitem] = checkList();
+    const [state, additem, checkitem, removeitem] = checklistFunction(Context);
 
     const flatListText = ({item}) =>{
         return(
@@ -56,7 +57,11 @@ export default function Main({navigation}){
                 <TextInput
                     placeholder={"Adicione algo..."}
                     onChangeText={(value)=>{setInputItem(value)}}
-                    value={inputItem} 
+                    value={inputItem}
+                    onSubmitEditing={(event)=>{
+                        additem(event.nativeEvent.text);
+                        setInputItem(null);
+                    }} 
                     style={Style.input}
                 />
                 <TouchableOpacity 
