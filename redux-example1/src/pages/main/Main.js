@@ -1,5 +1,5 @@
 //Importação Recursos do Sistema
-import React,{useState,useContext} from 'react';
+import React,{useState,useEffect} from 'react';
 import {Text, View, TextInput,TouchableOpacity, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Style from "./style";
 
 //Importação de Componentes Personalizados
-import {checklistFunction} from "../../hooks/functions";
+import {functionCheckList} from "../../hooks/redux/FunctionsRedux";
 import {Context} from "../../store";
 
 
@@ -15,11 +15,10 @@ export default function Main({navigation}){
 
     const [inputItem, setInputItem] = useState(null);
 
-    const [state, additem, checkitem, removeitem] = checklistFunction(Context);
+    const [state, additem, checkitem, removeitem] = functionCheckList(Context);
 
     const flatListText = ({item}) =>{
         return(
-            
             <TouchableOpacity onPress={()=>{
                     checkitem(item.id);
                 }} 
@@ -50,6 +49,10 @@ export default function Main({navigation}){
 
         );
     }
+
+    useEffect(()=>{
+        console.log(state);
+    },[])
 
     return(
         <View style={Style.container}>

@@ -1,12 +1,12 @@
 import React,{createContext,useReducer} from "react";
-import Reducer from "./hooks/Reducer";
+import {CheckList} from "./hooks/redux/Reducers";
 
 
 export const initialState = [];
 
 export const Store = ({children})=>{
 
-    const [state, dispatch] = useReducer(Reducer,initialState)
+    const [state, dispatch] = useReducer(CheckList,initialState)
 
     return(
         <Context.Provider value={[state,dispatch]}>
