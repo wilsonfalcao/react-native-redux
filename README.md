@@ -9,6 +9,7 @@ Esse projeto tem a finalidade de promover informações didáticas (de maneira s
 ## Bibliotecas usadas
 
 * [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+* [Context API](https://pt-br.reactjs.org/docs/context.html)
 * [redux](https://redux.js.org/introduction/getting-started)
 * [react-redux](https://react-redux.js.org/introduction/getting-started)
 
