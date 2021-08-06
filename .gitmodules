@@ -1,4 +1,6 @@
 [submodule "redux-example2"]
+	path= redux-example2
 	url = https://github.com/wilsonfalcao/react-native-redux-example2
 [submodule "redux-example3"]
+	path= redux-example3
 	url = https://github.com/wilsonfalcao/react-native-redux-example3
